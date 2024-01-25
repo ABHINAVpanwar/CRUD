@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD APP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      rel="noopener"
+      target="_blank"
+      href="index.css"
+    />
+  </head>
+  <body>
+    <div id="heading"><h1>CRUD</h1></div>
+    <div id="create">
+      <input type="text" id="input" />
+      <button id="B1">ADD</button>
+    </div>
+    <div id="items"></div>
+    <script>
+      var B1 = document.getElementById("B1");
+      var items = document.getElementById("items");
+      var input = document.getElementById("input");
+
+      B1.addEventListener("click", function () {
+        var item = document.createElement("div");
+        var text = document.createElement("div");
+        text.innerHTML = input.value;
+        var button1 = document.createElement("button");
+        button1.innerHTML = 'EDIT';
+        var button2 = document.createElement("button");
+        button2.innerHTML = 'DELETE';
+
+        button1.addEventListener("click", function () {
+          // Implement your edit logic here
+          var newText = prompt("ENTER NEW TEXT", text.innerHTML);
+          if (newText !== null) {
+            text.innerHTML = newText;
+          }
+        });
+
+        button2.addEventListener("click", function () {
+          // Implement your delete logic here
+          items.removeChild(item);
+        });
+
+        item.appendChild(text);
+        item.appendChild(button1);
+        item.appendChild(button2);
+        items.appendChild(item);
+        item.classList.add("item");
+        text.classList.add("text");
+        button1.classList.add("button1");
+        button2.classList.add("button2");
+        input.value = '';
+      });
+    </script>
+  </body>
+</html>
